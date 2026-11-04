@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Tailwind CSS for quick, beautiful styling -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome for the dropdown arrow icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Header / Bio -->
+    <header class="max-w-4xl mx-auto mt-12 px-4 text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">Your Name</h1>
+        <p class="text-lg text-gray-600 mt-2">Multimedia & Portfolio Showcase</p>
+    </header>
+
+    <!-- Portfolio Projects Container -->
+    <main class="max-w-4xl mx-auto mt-10 p-4 space-y-4">
+
+        <!-- PROJECT 1: Dropdown Accordion -->
+        <div class="border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">
+            <!-- Dropdown Toggle Button -->
+            <button onclick="toggleProject('project1', 'icon1')" class="w-full flex justify-between items-center p-5 font-semibold text-xl text-left bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none">
+                <span>Project One: Video Focus</span>
+                <i id="icon1" class="fa-solid fa-chevron-down transition-transform duration-200 text-gray-500"></i>
+            </button>
+            
+            <!-- Dropdown Content (Hidden by default) -->
+            <div id="project1" class="hidden p-6 border-t border-gray-200 space-y-4">
+                <p class="text-gray-600">This is a description of your first project. You can write as much text as you want here to explain your process, tools used, and outcomes.</p>
+                
+                <!-- Responsive Embedded Video (YouTube/Vimeo) -->
+                <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-inner">
+                    <!-- Replace the src URL with your actual embed link -->
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://youtube.com" title="Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: Dropdown Accordion -->
+        <div class="border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">
+            <!-- Dropdown Toggle Button -->
+            <button onclick="toggleProject('project2', 'icon2')" class="w-full flex justify-between items-center p-5 font-semibold text-xl text-left bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none">
+                <span>Project Two: Image Gallery</span>
+                <i id="icon2" class="fa-solid fa-chevron-down transition-transform duration-200 text-gray-500"></i>
+            </button>
+            
+            <!-- Dropdown Content -->
+            <div id="project2" class="hidden p-6 border-t border-gray-200 space-y-4">
+                <p class="text-gray-600">This project highlights photography or design work. Below is a clean grid layout for images.</p>
+                
+                <!-- Image Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <img src="https://unsplash.com" alt="Project Image 1" class="w-full h-64 object-cover rounded-lg shadow-sm">
+                    <img src="https://unsplash.com" alt="Project Image 2" class="w-full h-64 object-cover rounded-lg shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT 3: Dropdown Accordion -->
+        <div class="border border-gray-200 rounded-lg bg-white shadow-sm overflow-hidden">
+            <!-- Dropdown Toggle Button -->
+            <button onclick="toggleProject('project3', 'icon3')" class="w-full flex justify-between items-center p-5 font-semibold text-xl text-left bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none">
+                <span>Project Three: Mixed Media</span>
+                <i id="icon3" class="fa-solid fa-chevron-down transition-transform duration-200 text-gray-500"></i>
+            </button>
+            
+            <!-- Dropdown Content -->
+            <div id="project3" class="hidden p-6 border-t border-gray-200 space-y-4">
+                <p class="text-gray-600">A clean mix of text on the left and an image/video on the right for a side-by-side case study layout.</p>
+                
+                <!-- Side-by-Side Flex Layout -->
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="md:w-1/2 space-y-2">
+                        <h4 class="text-lg font-medium">The Challenge</h4>
+                        <p class="text-sm text-gray-600">Explaining a complex problem is easy when you put technical documentation right next to a visual diagram or video walkthrough.</p>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <img src="https://unsplash.com" alt="Case Study Layout" class="w-full h-48 object-cover rounded-lg shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Simple Accordion Script -->
+    <script>
+        function toggleProject(projectId, iconId) {
+            const content = document.getElementById(projectId);
+            const icon = document.getElementById(iconId);
+            
+            // Toggle the content visibility
+            content.classList.toggle('hidden');
+            
+            // Rotate the chevron icon
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>
