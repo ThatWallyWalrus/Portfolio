@@ -68,6 +68,7 @@
     border-radius: 24px;
     margin-bottom: 1rem;
     overflow: hidden;
+    transition: transform 0.15s ease, border-color 0.15s ease;
   }
   details[open] { border-color: var(--accent); }
   summary {
@@ -80,6 +81,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
+    transition: background 0.15s ease;
   }
   summary::-webkit-details-marker { display: none; }
   summary .tagline { font-size: 0.9rem; font-weight: 300; color: var(--muted); }
@@ -92,7 +94,11 @@
     margin-top: 0.35rem;
     transition: transform 0.2s ease;
   }
-  details[open] summary::after { transform: rotate(-135deg); }
+  details[open] > summary::after { transform: rotate(-135deg); }
+
+  /* Hover effects (same feel as the buttons) */
+  details:has(> summary:hover) { border-color: var(--accent); transform: translateY(-2px); }
+  summary:hover { background: linear-gradient(135deg, var(--navy-light), var(--navy)); }
 
   .project-body { padding: 0 1.5rem 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
   .project-body p { color: var(--muted); max-width: 640px; }
@@ -109,6 +115,12 @@
   }
   .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; width: 100%; }
   .gallery img { aspect-ratio: 16 / 10; object-fit: cover; }
+
+  /* Nested How? / Why? / What I learned dropdowns */
+  .sub { width: 100%; display: flex; flex-direction: column; gap: 0.75rem; }
+  .sub details { border-radius: 20px; margin-bottom: 0; background: rgba(0, 0, 0, 0.25); }
+  .sub summary { padding: 0.9rem 1.25rem; font-size: 1rem; }
+  .sub .project-body { padding: 0 1.25rem 1.5rem; }
 
   /* Contact */
   #contact p { color: var(--muted); margin-bottom: 1.5rem; }
@@ -158,10 +170,29 @@ Dynamic Foliage Interaction: Workflow Showcase (Unreal Engine 5.8)"
           <img src="assets/project-one-2.jpg" alt="Project One screenshot 2" loading="lazy">
           <img src="assets/project-one-3.jpg" alt="Project One screenshot 3" loading="lazy">
         </div>
-        <ul class="tags"><li>Python</li><li>React</li><li>AWS</li></ul>
-        <div class="btn-row">
-          <a class="btn" href="https://github.com/yourname/project-one" target="_blank" rel="noopener">View code</a>
-          <a class="btn" href="https://example.com" target="_blank" rel="noopener">Live demo</a>
+
+        <div class="sub">
+          <details>
+            <summary>How?</summary>
+            <div class="project-body">
+              <p>Placeholder: explain how the system works, the key technical decisions, and the tools you used.</p>
+              <img src="assets/project-one-how.jpg" alt="Project One: how it works" loading="lazy">
+            </div>
+          </details>
+          <details>
+            <summary>Why?</summary>
+            <div class="project-body">
+              <p>Placeholder: explain why you built it, the problem it solves, and the results it achieved.</p>
+              <img src="assets/project-one-why.jpg" alt="Project One: why it was built" loading="lazy">
+            </div>
+          </details>
+          <details>
+            <summary>What I learned:</summary>
+            <div class="project-body">
+              <p>Placeholder: explain what you learned, what went wrong, and what you would do differently next time.</p>
+              <img src="assets/project-one-learned.jpg" alt="Project One: what I learned" loading="lazy">
+            </div>
+          </details>
         </div>
       </div>
     </details>
@@ -169,44 +200,46 @@ Dynamic Foliage Interaction: Workflow Showcase (Unreal Engine 5.8)"
     <!-- PROJECT 2 -->
     <details>
       <summary>
-        Project Two
+        Multi-region master material with UV-less workflow
         <span class="tagline">One-line summary of the project</span>
       </summary>
       <div class="project-body">
-        <video controls preload="metadata" poster="assets/project-two-poster.jpg">
-          <source src="assets/project-two.mp4" type="video/mp4">
-        </video>
+        <iframe
+  src="https://www.youtube.com/embed/rYcSwpOX5E4"
+  title="Multi-region master material with UV-less workflow"
+  style="width:100%; aspect-ratio:16/9; border:0; border-radius:18px;"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  loading="lazy">
+</iframe>
         <p>Describe the project here: what problem it solves, your role, and the result.</p>
         <div class="gallery">
           <img src="assets/project-two-1.jpg" alt="Project Two screenshot 1" loading="lazy">
           <img src="assets/project-two-2.jpg" alt="Project Two screenshot 2" loading="lazy">
         </div>
-        <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>PostgreSQL</li></ul>
-        <div class="btn-row">
-          <a class="btn" href="https://github.com/yourname/project-two" target="_blank" rel="noopener">View code</a>
-        </div>
-      </div>
-    </details>
 
-    <!-- PROJECT 3 -->
-    <details>
-      <summary>
-        Project Three
-        <span class="tagline">One-line summary of the project</span>
-      </summary>
-      <div class="project-body">
-        <!-- For a YouTube video instead of a file, replace the <video> with:
-        <iframe width="100%" style="aspect-ratio:16/9;border:0;border-radius:18px" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen loading="lazy"></iframe> -->
-        <video controls preload="metadata">
-          <source src="assets/project-three.mp4" type="video/mp4">
-        </video>
-        <p>Describe the project here: what problem it solves, your role, and the result.</p>
-        <div class="gallery">
-          <img src="assets/project-three-1.jpg" alt="Project Three screenshot 1" loading="lazy">
-        </div>
-        <ul class="tags"><li>Go</li><li>Docker</li></ul>
-        <div class="btn-row">
-          <a class="btn" href="https://github.com/yourname/project-three" target="_blank" rel="noopener">View code</a>
+        <div class="sub">
+          <details>
+            <summary>How?</summary>
+            <div class="project-body">
+              <p>Placeholder: explain how the material works, the key technical decisions, and the tools you used.</p>
+              <img src="assets/project-two-how.jpg" alt="Project Two: how it works" loading="lazy">
+            </div>
+          </details>
+          <details>
+            <summary>Why?</summary>
+            <div class="project-body">
+              <p>Placeholder: explain why you built it, the problem it solves, and the results it achieved.</p>
+              <img src="assets/project-two-why.jpg" alt="Project Two: why it was built" loading="lazy">
+            </div>
+          </details>
+          <details>
+            <summary>What I learned:</summary>
+            <div class="project-body">
+              <p>Placeholder: explain what you learned, what went wrong, and what you would do differently next time.</p>
+              <img src="assets/project-two-learned.jpg" alt="Project Two: what I learned" loading="lazy">
+            </div>
+          </details>
         </div>
       </div>
     </details>
