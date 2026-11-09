@@ -175,21 +175,29 @@ Dynamic Foliage Interaction: Workflow Showcase (Unreal Engine 5.8)"
           <details>
             <summary>How?</summary>
             <div class="project-body">
-              <p>Placeholder: explain how the system works, the key technical decisions, and the tools you used.</p>
+              <p>The system primarily works through a data table. The primary key is the static mesh of the foliage instance,
+                since the foliage asset isn't exposed to blueprints via line trace hit results.
+                On BeginPlay, the managing actor loops through the entire data table once and maps the static mesh to the corresponding row in the data table. 
+                When the player interacts with a plant instance, the resulting search from that line trace is an O(1) map lookup.
+                From there, the logic simply reads from the relevant data table entries for that row.</p>
               <img src="assets/project-one-how.jpg" alt="Project One: how it works" loading="lazy">
             </div>
           </details>
           <details>
             <summary>Why?</summary>
             <div class="project-body">
-              <p>Placeholder: explain why you built it, the problem it solves, and the results it achieved.</p>
+              <p>I built the system to work off of the existing foliage mode in Unreal Engine because the foliage mode already has optimized mesh instancing and convenient instance placement.
+              Using a data table allows all settings for all plants to be accessed via a single file, so my non-programming collaborators can make changes or add new plants entirely with different functionality
+              than existing ones.</p>
               <img src="assets/project-one-why.jpg" alt="Project One: why it was built" loading="lazy">
             </div>
           </details>
           <details>
             <summary>What I learned:</summary>
             <div class="project-body">
-              <p>Placeholder: explain what you learned, what went wrong, and what you would do differently next time.</p>
+              <p>During this project I learned a lot about Unreal's Foliage tool, data-driven programming, and the foliage actor->instancing heirarchy. 
+                I also encountered obstacles such as the foliage asset not being accessible, requiring the mesh to be unique. If I were to re-factor or re-create the system again, I would likely
+              use the Material Instance as the primary key to the table instead of the mesh, so that reusing the same mesh for a different plant species would not require duplicating the mesh to keep the key unique between rows.</p>
               <img src="assets/project-one-learned.jpg" alt="Project One: what I learned" loading="lazy">
             </div>
           </details>
